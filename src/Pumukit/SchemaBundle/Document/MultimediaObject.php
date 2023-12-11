@@ -8,7 +8,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Pumukit\SchemaBundle\Document\ObjectValue\Immutable;
+use Pumukit\SchemaBundle\Document\ValueObject\Immutable;
+use Pumukit\SchemaBundle\Document\MediaType\Media;
 
 /**
  * @MongoDB\Document(repositoryClass="Pumukit\SchemaBundle\Repository\MultimediaObjectRepository")
@@ -76,7 +77,7 @@ class MultimediaObject
     private $numerical_id;
 
     /**
-     * @MongoDB\EmbedOne(name="immutable", targetDocument="Pumukit\SchemaBundle\Document\ObjectValue\Immutable")
+     * @MongoDB\EmbedOne(name="immutable", targetDocument="Pumukit\SchemaBundle\Document\ValueObject\Immutable")
      */
     private $immutable;
 
@@ -139,6 +140,12 @@ class MultimediaObject
      * @MongoDB\EmbedMany(targetDocument=Track::class)
      */
     private $tracks;
+
+
+    /**
+     * @MongoDB\EmbedMany(targetDocument=Media::class)
+     */
+    private $media;
 
     /**
      * @MongoDB\ReferenceMany(targetDocument=Group::class, storeAs="id", sort={"key":1}, strategy="setArray", cascade={"persist","remove"})
