@@ -50,3 +50,5 @@ node_modules
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+/.idea/.gitignore
+/.idea/aws.xml
